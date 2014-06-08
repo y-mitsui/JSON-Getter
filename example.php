@@ -9,5 +9,7 @@ $result=$ctx->match($json);
 
 for($i=0;$i<count($result);$i++){
 	var_dump($result[$i]);
+	unset($result[$i]) //modify $json as originlal too.
 }
+var_dump($json);
 ?>
