@@ -11,8 +11,8 @@ A Json selector like XPath written by PHP
 > vi /usr/local/lib/php/PHP/LexerGenerator/Parser.php # (Path is case-by-case)  
 [befor]  
 
-  fwrite($this->out, '$yy_global_pattern = \'' .  
-  $pattern . '\';' . "\n");  
+    fwrite($this->out, '$yy_global_pattern = \'' .  
+    $pattern . '\';' . "\n");  
 
 [after]  
 <pre>
