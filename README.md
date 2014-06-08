@@ -26,6 +26,7 @@ A Json selector like XPath written by PHP
 
 #### Input this following on shell  
     
+    $ git clone https://github.com/y-mitsui/JSON-Getter.git && cd JSON-Getter
     $ phplemon selectParser.y  
 
 ## Usage
