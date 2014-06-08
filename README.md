@@ -4,7 +4,7 @@ A Json selector like XPath written by PHP
 
 ## Installation
 
-### install PHP_LexerGenerator and PHP_ParserGenerator of latest version.  
+1. install PHP_LexerGenerator and PHP_ParserGenerator of latest version.  
 
     $ pear install PHP_ParserGenerator-0.1.7  
     $ pear install PHP_LexerGenerator-0.4.0  
