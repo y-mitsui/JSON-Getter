@@ -11,7 +11,7 @@ A Json selector like XPath written by PHP
     
 #### If your installing version is 0.4.0 of PHP_LexerGenerator,You must do bagfix of core this following.  
 
-    vi /usr/local/lib/php/PHP/LexerGenerator/Parser.php # (Path is case-by-case)  
+    $ vi /usr/local/lib/php/PHP/LexerGenerator/Parser.php # (Path is case-by-case)  
     
 [befor]  
 
