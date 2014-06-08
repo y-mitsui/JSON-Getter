@@ -3,6 +3,10 @@ JSON-Getter for PHP
 A Json selector like XPath written by PHP
 
 ## Install
+
+    $ git clone https://github.com/justinrainbow/json-schema.git
+
+
 1. install PHP_LexerGenerator and PHP_ParserGenerator of latest version.  
 
     $ pear install PHP_ParserGenerator-0.1.7  
