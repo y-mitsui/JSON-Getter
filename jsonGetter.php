@@ -17,7 +17,9 @@ class JsonGetter{
 	}
 	public function match(&$json){
 		$matchingElements=array();
-		$this->__match($json,$condition_root,$matchingElements);
+		var_dump($this->condition_root);
+		$this->__match($json,$this->condition_root,$matchingElements);
+		var_dump($matchingElements);
 		return $matchingElements;
 	}
 	function parse($syntax){
@@ -55,13 +57,20 @@ class JsonGetter{
 			$res[]=&$json;
 			return ;
 		}
-		if(!is_array($json)) return;
+		if(!is_array($json)){
+			
+			return;
+		}
 		foreach($json as $k => $v){
+			echo "a\n";
 			if($this->matchName($k,$node['name']) && (!$node['condition'] || $this->condition($node['condition'],$json[$k]))){
+				echo "b:".$node['next']."\n";
 				if($node['next'])
 					$this->__match($json[$k],$node['next'],$res); 
-				else
+				else{
+					echo "OK\n";
 					$res[]=&$json[$k];
+				}
 			}elseif($node['type']=RELATIVE)
 				$this->__match($json[$k],$node,$res); 
 		}
