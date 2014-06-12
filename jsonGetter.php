@@ -57,18 +57,13 @@ class JsonGetter{
 			$res[]=&$json;
 			return ;
 		}
-		if(!is_array($json)){
-			
-			return;
-		}
+		if(!is_array($json)) return;
+		
 		foreach($json as $k => $v){
-			echo "a\n";
 			if($this->matchName($k,$node['name']) && (!$node['condition'] || $this->condition($node['condition'],$json[$k]))){
-				echo "b:".$node['next']."\n";
 				if($node['next'])
 					$this->__match($json[$k],$node['next'],$res); 
 				else{
-					echo "OK\n";
 					$res[]=&$json[$k];
 				}
 			}elseif($node['type']=RELATIVE)
