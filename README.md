@@ -29,5 +29,14 @@ A Json selector like XPath written by PHP
     $ git clone https://github.com/y-mitsui/JSON-Getter.git && cd JSON-Getter
     $ phplemon selectParser.y  
 
+<!--
+$ phplemon selectParser.y
+Could not open input file: /usr/local/bin/PHP/ParserGenerator/cli.php
+$ sudo vim `which phplemon`
+#before
+exec $PHP -C -q $INCARG -d open_basedir="" -d safe_mode=0 -d register_argc_argv="On" -d auto_prepend_file="" -d auto_append_file="" $INCDIR/PHP/ParserGenerator/cli.php "$@"
+#after
+exec $PHP -C -q $INCARG -d open_basedir="" -d safe_mode=0 -d register_argc_argv="On" -d auto_prepend_file="" -d auto_append_file="" /usr/local/lib/php/PHP/ParserGenerator/cli.php "$@"
+-->
 ## Usage
 Read example.php

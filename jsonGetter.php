@@ -17,7 +17,7 @@ class JsonGetter{
 	}
 	public function match(&$json){
 		$matchingElements=array();
-		__match($json,$condition_root,$matchingElements);
+		$this->__match($json,$condition_root,$matchingElements);
 		return $matchingElements;
 	}
 	function parse($syntax){
@@ -26,7 +26,7 @@ class JsonGetter{
 		while ($lexer->yylex()) {
 			$this->parser->doParse($lexer->token, $lexer->value);
 		}
-		$parser->doParse(0, 0);
+		$this->parser->doParse(0, 0);
 		return $this->parser->result_root;
 	}
 	function condition($cond,&$json){
