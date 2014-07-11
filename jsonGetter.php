@@ -19,7 +19,6 @@ class JsonGetter{
 		$matchingElements=array();
 		var_dump($this->condition_root);
 		$this->__match($json,$this->condition_root,$matchingElements);
-		var_dump($matchingElements);
 		return $matchingElements;
 	}
 	function parse($syntax){
@@ -33,9 +32,9 @@ class JsonGetter{
 	}
 	function condition($cond,&$json){
 		switch ($cond['type']){
-		case M_AND:
+		case SelectParser::M_AND:
 			return $this->condition($cond['left'],$json) && $this->condition($cond['right'],$json);
-		case EQUAL:
+		case SelectParser::EQUAL:
 			$matched=array();
 			$this->__match($json,$cond['left'],$matched);
 			for($i=0;$i<count($matched);$i++){
@@ -46,15 +45,17 @@ class JsonGetter{
 	}
 	function matchName($name,$condition){
 		switch($condition['type']){
-		case N_REGEX:
+		case SelectParser::N_REGEX:
 			return ereg($condition['value'],$name);
-		case N_NORMAL:
+		case SelectParser::N_NORMAL:
+		case SelectParser::N_ATTRIBUTE:
+			
 			return $name==$condition['value'];
 		}
 	}
 	function __match(&$json,$node,&$res){
-		if($node['name']['type']==N_FUNCTION){
-			$res[]=&$json;
+		if($node['name']['type']==SelectParser::N_FUNCTION){
+			$res[]=$json;
 			return ;
 		}
 		if(!is_array($json)) return;
@@ -64,9 +65,10 @@ class JsonGetter{
 				if($node['next'])
 					$this->__match($json[$k],$node['next'],$res); 
 				else{
+					//unset($json[$k]);
 					$res[]=&$json[$k];
 				}
-			}elseif($node['type']=RELATIVE)
+			}elseif($node['type']=SelectParser::RELATIVE)
 				$this->__match($json[$k],$node,$res); 
 		}
 	}

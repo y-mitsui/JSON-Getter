@@ -35,6 +35,7 @@ LBACKET = "["
 RBACKET = "]"
 EQUAL = "="
 SLASH = "/"
+ATMARK = "@"
 LG = "<"
 RG = ">"
 M_REGEX = /<[^>]+>/
@@ -46,8 +47,8 @@ PLUS { $this->token=SelectParser::PLUS; }
 MINUS { $this->token=SelectParser::MINUS; }
 TIMES { $this->token=SelectParser::TIMES; }
 M_REGEX { $this->token=SelectParser::M_REGEX; }
-LG { echo "LG\n"; $this->token=SelectParser::LG; }
-RG { echo "RG\n"; $this->token=SelectParser::RG; }
+LG { $this->token=SelectParser::LG; }
+RG { $this->token=SelectParser::RG; }
 M_OR { $this->token=SelectParser::M_OR; }
 M_AND { echo "AND\n";$this->token=SelectParser::M_AND; }
 NUMERAL { $this->token=SelectParser::NUMERAL; }
@@ -55,10 +56,11 @@ LPAREN { $this->token=SelectParser::LPAREN; }
 RPAREN { $this->token=SelectParser::RPAREN; }
 LBACKET { $this->token=SelectParser::LBACKET; }
 RBACKET { $this->token=SelectParser::RBACKET; }
-M_FUNCTION { echo "FUNC\n"; $this->token=SelectParser::M_FUNCTION; }
-ALPHA_NUM {  echo "ALNUM\n";$this->token=SelectParser::ALPHA_NUM; }
+M_FUNCTION { $this->token=SelectParser::M_FUNCTION; }
+ALPHA_NUM {  $this->token=SelectParser::ALPHA_NUM; }
 SLASH {  $this->token=SelectParser::SLASH; }
-LETERAL { $this->token=SelectParser::LETERAL; }
+ATMARK { $this->token=SelectParser::ATMARK; }
+LETERAL { echo "LETERAL\n"; $this->token=SelectParser::LETERAL; }
 EQUAL { echo "EQUAL\n"; $this->token=SelectParser::EQUAL; }
 WHITESPACE { return false; }
 */
